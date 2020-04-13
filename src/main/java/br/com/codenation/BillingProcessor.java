@@ -1,18 +1,42 @@
+/*Fonte para uso de 
+ * SOLID: Single Responsibility Principle
+ * https://www.eduardopires.net.br/2013/05/single-responsibility-principle-srp/
+ * */
 package br.com.codenation;
 
-public class BillingProcessor {
+import br.com.codenation.paymentmethods.PriceStrategy;
 
+public class BillingProcessor {
+	public class CashPayment implements PriceStrategy {
+
+	    @Override
+	    public Double calculate(Double price) {
+	        return price * 0.9;
+	    }
+	public class CreditCardPayment implements PriceStrategy {
+
+	   @Override
+	   public Double calculate(Double price) {
+	       return price * 0.98;
+	   }
+	      
+	public class DebitCardPayment implements PriceStrategy {
+
+	@Override
+	public Double calculate(Double price) {
+		  return price * 0.95;
+	  }	   
+	public class TransferPayment implements PriceStrategy {
+
+	@Override
+	public Double calculate(Double price) {
+	return price * 0.92;
+	}
+	   
+	   
     public Double calculate(Order order) {
-        switch (order.getPaymentMethod()) {
-            case CASH:
-                return order.getPrice() * 0.9;
-            case TRANSFER:
-                return order.getPrice() * 0.92;
-            case CREDIT_CARD:
-                return order.getPrice() * 0.98;
-            case DEBIT_CARD:
-                return order.getPrice() * 0.95;
-        }
-        throw new RuntimeException("Payment method not implemented");
+        return order.getPaymentMethod().getPaymentStrategy().calculate(order.getPrice());
     }
+	}
 }
+}}}

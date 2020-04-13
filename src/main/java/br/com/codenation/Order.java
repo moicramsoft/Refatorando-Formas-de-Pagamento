@@ -19,4 +19,12 @@ public class Order {
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
 }
