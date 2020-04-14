@@ -4,8 +4,8 @@ import br.com.codenation.paymentmethods.PaymentMethod;
 
 public class Order {
 
-    private Double price;
-    private PaymentMethod paymentMethod;
+	public Double price;
+	public PaymentMethod paymentMethod;
 
     public Order(Double price, PaymentMethod paymentMethod) {
         this.price = price;
@@ -19,12 +19,4 @@ public class Order {
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	public void setPaymentMethod(PaymentMethod paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
 }
